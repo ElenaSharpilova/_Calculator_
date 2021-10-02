@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_con"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/et_1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="35dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/edit_bg"
+        android:gravity="center"
+        android:hint="@string/enter_num"
+        android:textSize="20sp"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edit_bg"
+        android:textSize="20sp"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:hint="@string/enter_num"
+        android:gravity="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/et_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_1"
+        app:layout_constraintTop_toTopOf="@+id/et_1"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/button_bg"
+        android:text="@string/plus"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_1"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_multiply"
+        android:layout_width="91dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_bg"
+        android:text="@string/multiply"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_minus"
+        app:layout_constraintStart_toStartOf="@+id/btn_minus"
+        app:layout_constraintTop_toBottomOf="@+id/btn_minus" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_division"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_bg"
+        android:text="@string/division"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_multiply"
+        app:layout_constraintStart_toStartOf="@+id/btn_multiply"
+        app:layout_constraintTop_toBottomOf="@+id/btn_multiply" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_bg"
+        android:text="@string/minus"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_plus"
+        app:layout_constraintStart_toStartOf="@+id/btn_plus"
+        app:layout_constraintTop_toBottomOf="@+id/btn_plus" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_division" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
