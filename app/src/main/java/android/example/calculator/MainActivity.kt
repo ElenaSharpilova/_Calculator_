@@ -1,5 +1,6 @@
 package android.example.calculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -8,50 +9,79 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var editFirst: EditText
+    lateinit var editSecond: EditText
+    lateinit var btnPlus: Button
+    lateinit var btnMultiply: Button
+    lateinit var btnMinus: Button
+    lateinit var btnDivision: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val et_1 = findViewById<EditText>(R.id.et_1)
-        val et_2 = findViewById<EditText>(R.id.et_2)
-        val tv_result = findViewById<TextView>(R.id.tv_result)
-        val btn_plus = findViewById<Button>(R.id.btn_plus)
-        val btn_minus = findViewById<Button>(R.id.btn_minus)
-        val btn_multiply = findViewById<Button>(R.id.btn_multiply)
-        val btn_division = findViewById<Button>(R.id.btn_division)
+        editFirst = findViewById(R.id.et_1)
+        editSecond = findViewById(R.id.et_2)
+        btnPlus = findViewById(R.id.btn_plus)
+        btnMinus = findViewById(R.id.btn_minus)
+        btnMultiply = findViewById(R.id.btn_multiply)
+        btnDivision = findViewById(R.id.btn_division)
 
 
-
-        btn_plus.setOnClickListener {
-            val s_1 = et_1.text.toString().toDouble()
-            val s_2 = et_2.text.toString().toDouble()
-            val result = s_1 + s_2
-            tv_result.text = "$s_1 + $s_2 = $result"
+        btnPlus.setOnClickListener {
+            val res1 = editFirst.text.toString().toDouble()
+            val res2 = editSecond.text.toString().toDouble()
+            addition(res1, res2)
         }
 
-        btn_minus.setOnClickListener {
-            val s_1 = et_1.text.toString().toDouble()
-            val s_2 = et_2.text.toString().toDouble()
-            val result = s_1 - s_2
-            tv_result.text = "$s_1 - $s_2 = $result"
+        btnMinus.setOnClickListener {
+            val res1 = editFirst.text.toString().toDouble()
+            val res2 = editSecond.text.toString().toDouble()
+            subtraction(res1, res2)
         }
 
-        btn_multiply.setOnClickListener {
-            val s_1 = et_1.text.toString().toDouble()
-            val s_2 = et_2.text.toString().toDouble()
-            val result = s_1 * s_2
-            tv_result.text = "$s_1 * $s_2 = $result"
+        btnMultiply.setOnClickListener {
+            val res1 = editFirst.text.toString().toDouble()
+            val res2 = editSecond.text.toString().toDouble()
+            multiplication(res1, res2)
         }
 
-        btn_division.setOnClickListener {
-            val s_1 = et_1.text.toString().toDouble()
-            val s_2 = et_2.text.toString().toDouble()
-            val result = s_1 / s_2
-            tv_result.text = "$s_1 / $s_2 = $result"
-            if (et_1.text.toString().toInt() == 0 || et_2.text.toString().toInt() == 0){
-                tv_result.text = "На ноль делить нельзя!"
-            }
+        btnDivision.setOnClickListener {
+            val res1 = editFirst.text.toString().toDouble()
+            val res2 = editSecond.text.toString().toDouble()
+            division(res1, res2)
         }
 
     }
+
+    private fun addition (res1: Double, res2: Double) {
+        val result = res1 + res2
+        intentStartNewActivity(result.toString())
+
+    }
+
+    private fun subtraction (res1: Double, res2: Double) {
+        val result = res1 - res2
+        intentStartNewActivity(result.toString())
+
+    }
+
+    private fun multiplication (res1: Double, res2: Double) {
+        val result = res1 * res2
+        intentStartNewActivity(result.toString())
+
+    }
+
+    private fun division (res1: Double, res2: Double) {
+        val result = res1 / res2
+        intentStartNewActivity(result.toString())
+
+    }
+
+    fun intentStartNewActivity(result: String){
+        val intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra("result", result)
+        startActivity(intent)
+    }
 }
+

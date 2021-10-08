@@ -5,4 +5,5 @@
     <string name="multiply">*</string>
     <string name="division">/</string>
     <string name="enter_num">Enter number</string>
+    <string name="result">YOUR RESULT</string>
 </resources>
