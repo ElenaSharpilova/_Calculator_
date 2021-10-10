@@ -29,20 +29,20 @@ class MainActivity : AppCompatActivity() {
 
 
         btnPlus.setOnClickListener {
-            val res1 = editFirst.text.toString().toDouble()
-            val res2 = editSecond.text.toString().toDouble()
+            val res1 = editFirst.text.toString().toInt()
+            val res2 = editSecond.text.toString().toInt()
             addition(res1, res2)
         }
 
         btnMinus.setOnClickListener {
-            val res1 = editFirst.text.toString().toDouble()
-            val res2 = editSecond.text.toString().toDouble()
+            val res1 = editFirst.text.toString().toInt()
+            val res2 = editSecond.text.toString().toInt()
             subtraction(res1, res2)
         }
 
         btnMultiply.setOnClickListener {
-            val res1 = editFirst.text.toString().toDouble()
-            val res2 = editSecond.text.toString().toDouble()
+            val res1 = editFirst.text.toString().toInt()
+            val res2 = editSecond.text.toString().toInt()
             multiplication(res1, res2)
         }
 
@@ -54,19 +54,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun addition (res1: Double, res2: Double) {
+    private fun addition (res1: Int, res2: Int) {
         val result = res1 + res2
         intentStartNewActivity(result.toString())
 
     }
 
-    private fun subtraction (res1: Double, res2: Double) {
+    private fun subtraction (res1: Int, res2: Int) {
         val result = res1 - res2
         intentStartNewActivity(result.toString())
 
     }
 
-    private fun multiplication (res1: Double, res2: Double) {
+    private fun multiplication (res1: Int, res2: Int) {
         val result = res1 * res2
         intentStartNewActivity(result.toString())
 
