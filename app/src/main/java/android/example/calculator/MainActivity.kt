@@ -3,11 +3,11 @@ package android.example.calculator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
@@ -67,11 +67,12 @@ class MainActivity : AppCompatActivity() {
             val res2 = editSecond.text.toString()
             if (res1.equals("") || res2.equals("")) {
                 Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
+            } else if (res1.toInt() == 0 || res2.toInt() == 0) {
+                Toast.makeText(this, "You cannot divided by zero", Toast.LENGTH_LONG).show()
             } else {
-                division(res1.toDouble(), res2.toDouble())
+            division(res1.toDouble(), res2.toDouble())
             }
         }
-
     }
 
     private fun addition (res1: Int, res2: Int) {
@@ -94,8 +95,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun division (res1: Double, res2: Double) {
         val result = res1 / res2
-        intentStartNewActivity(result.toString())
-
+        val _result = DecimalFormat("#.##")
+        _result.roundingMode = RoundingMode.CEILING
+        intentStartNewActivity(_result.format(result).toString())
     }
 
     fun intentStartNewActivity(result: String){
