@@ -3,9 +3,11 @@ package android.example.calculator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,27 +31,45 @@ class MainActivity : AppCompatActivity() {
 
 
         btnPlus.setOnClickListener {
-            val res1 = editFirst.text.toString().toInt()
-            val res2 = editSecond.text.toString().toInt()
-            addition(res1, res2)
+            val res1 = editFirst.text.toString()
+            val res2 = editSecond.text.toString()
+
+            if (res1.equals("") || res2.equals("")) {
+                Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
+            } else {
+                addition(res1.toInt(), res2.toInt())
+            }
         }
 
         btnMinus.setOnClickListener {
-            val res1 = editFirst.text.toString().toInt()
-            val res2 = editSecond.text.toString().toInt()
-            subtraction(res1, res2)
+            val res1 = editFirst.text.toString()
+            val res2 = editSecond.text.toString()
+            if (res1.equals("") || res2.equals("")) {
+                Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
+            } else {
+               subtraction(res1.toInt(), res2.toInt())
+            }
+
         }
 
         btnMultiply.setOnClickListener {
-            val res1 = editFirst.text.toString().toInt()
-            val res2 = editSecond.text.toString().toInt()
-            multiplication(res1, res2)
+            val res1 = editFirst.text.toString()
+            val res2 = editSecond.text.toString()
+            if (res1.equals("") || res2.equals("")) {
+                Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
+            } else {
+                multiplication(res1.toInt(), res2.toInt())
+            }
         }
 
         btnDivision.setOnClickListener {
-            val res1 = editFirst.text.toString().toDouble()
-            val res2 = editSecond.text.toString().toDouble()
-            division(res1, res2)
+            val res1 = editFirst.text.toString()
+            val res2 = editSecond.text.toString()
+            if (res1.equals("") || res2.equals("")) {
+                Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
+            } else {
+                division(res1.toDouble(), res2.toDouble())
+            }
         }
 
     }
