@@ -17,8 +17,4 @@ class ResultActivity : AppCompatActivity() {
 
     }
 
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        getResult.text = ""
-//    }
 }

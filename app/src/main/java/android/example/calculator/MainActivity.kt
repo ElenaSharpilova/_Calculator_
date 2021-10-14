@@ -11,8 +11,8 @@ import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var editFirst: EditText
-    lateinit var editSecond: EditText
+    private lateinit var editFirst: EditText
+    private lateinit var editSecond: EditText
     lateinit var btnPlus: Button
     lateinit var btnMultiply: Button
     lateinit var btnMinus: Button
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             if (res1.equals("") || res2.equals("")) {
                 Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
             } else {
-                addition(res1.toInt(), res2.toInt())
+                addition(res1.toFloat(), res2.toFloat())
             }
         }
 
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             if (res1.equals("") || res2.equals("")) {
                 Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
             } else {
-               subtraction(res1.toInt(), res2.toInt())
+               subtraction(res1.toFloat(), res2.toFloat())
             }
 
         }
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             if (res1.equals("") || res2.equals("")) {
                 Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
             } else {
-                multiplication(res1.toInt(), res2.toInt())
+                multiplication(res1.toFloat(), res2.toFloat())
             }
         }
 
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             val res2 = editSecond.text.toString()
             if (res1.equals("") || res2.equals("")) {
                 Toast.makeText(this, "Please, enter numbers", Toast.LENGTH_LONG).show()
-            } else if (res1.toInt() == 0 || res2.toInt() == 0) {
+            } else if (res1.toDouble() == 0.0 || res2.toDouble() == 0.0) {
                 Toast.makeText(this, "You cannot divided by zero", Toast.LENGTH_LONG).show()
             } else {
             division(res1.toDouble(), res2.toDouble())
@@ -75,19 +75,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addition (res1: Int, res2: Int) {
+    private fun addition (res1: Float, res2: Float) {
         val result = res1 + res2
         intentStartNewActivity(result.toString())
 
     }
 
-    private fun subtraction (res1: Int, res2: Int) {
+    private fun subtraction (res1: Float, res2: Float) {
         val result = res1 - res2
         intentStartNewActivity(result.toString())
 
     }
 
-    private fun multiplication (res1: Int, res2: Int) {
+    private fun multiplication (res1: Float, res2: Float) {
         val result = res1 * res2
         intentStartNewActivity(result.toString())
 
@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         intentStartNewActivity(_result.format(result).toString())
     }
 
-    fun intentStartNewActivity(result: String){
+    private fun intentStartNewActivity(result: String){
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("result", result)
         startActivity(intent)
